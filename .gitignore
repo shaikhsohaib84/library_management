@@ -1,0 +1,15 @@
+.DS_Store
+library/crud/__pycache__/__init__.cpython-39.pyc
+library/crud/__pycache__/admin.cpython-39.pyc
+library/crud/__pycache__/apps.cpython-39.pyc
+library/crud/__pycache__/choices.cpython-39.pyc
+library/crud/__pycache__/models.cpython-39.pyc
+library/crud/migrations/__pycache__/__init__.cpython-39.pyc
+library/crud/migrations/__pycache__/0001_initial.cpython-39.pyc
+library/crud/migrations/__pycache__/0002_alter_admin_password.cpython-39.pyc
+library/crud/migrations/__pycache__/0002_auto_20211027_1115.cpython-39.pyc
+library/crud/migrations/__pycache__/0002_auto_20211027_1139.cpython-39.pyc
+library/library/__pycache__/__init__.cpython-39.pyc
+library/library/__pycache__/settings.cpython-39.pyc
+library/library/__pycache__/urls.cpython-39.pyc
+library/library/__pycache__/wsgi.cpython-39.pyc
