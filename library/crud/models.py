@@ -13,10 +13,7 @@ class Admin(models.Model):
     name = models.CharField(max_length=20, blank=False, null=False)
     email = models.EmailField(max_length=254, blank=False, null=False, unique=True)
     password = models.TextField(max_length=255, blank=False, null=False) 
-
-    # USERNAME_FIELD = 'email'
-    # REQUIRED_FIELDS = ['username']
-
+    
     class Meta:
         db_table = 'Admin'
 
@@ -30,9 +27,9 @@ class Book(models.Model):
     book_author_name = models.CharField(max_length=50, blank=False, null=False)
     book_price = models.IntegerField(blank=False, null=False)
     book_type = models.CharField(max_length=50, blank=False, null=False, default=1, choices=BOOK_TYPE_CHOICES)
-
+    admin = models.ForeignKey(Admin, on_delete=models.CASCADE)
     class Meta:
         db_table = 'Book'
 
     def __str__(self):
-        return self.id
+        return self.book_name

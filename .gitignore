@@ -13,3 +13,12 @@ library/library/__pycache__/__init__.cpython-39.pyc
 library/library/__pycache__/settings.cpython-39.pyc
 library/library/__pycache__/urls.cpython-39.pyc
 library/library/__pycache__/wsgi.cpython-39.pyc
+library/crud/__pycache__/serializers.cpython-39.pyc
+library/crud/__pycache__/urls.cpython-39.pyc
+library/crud/__pycache__/views.cpython-39.pyc
+library/crud/migrations/0001_initial.py
+library/crud/migrations/0002_alter_admin_password.py
+library/crud/migrations/__pycache__/0002_rename_admin_id_book_admin.cpython-39.pyc
+library/library/__init__.py
+library/crud/migrations/0001_initial.py
+library/crud/migrations/0002_alter_admin_password.py

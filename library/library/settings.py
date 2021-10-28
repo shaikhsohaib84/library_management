@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
-    'crud'
+    'crud',
+
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
@@ -139,3 +141,7 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # AUTH_USER_MODEL = 'crud.User'
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:3000"
+]
