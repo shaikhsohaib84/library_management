@@ -38,9 +38,9 @@
 
 ### Recorded screen for reference
 
-Screen recording:
+Screen recording link:
 
-![](https://recordit.co/bF0Oqm14Bu)
+`https://recordit.co/bF0Oqm14Bu`
 
 
 ----
