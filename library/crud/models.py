@@ -26,7 +26,8 @@ class Book(models.Model):
     book_name = models.CharField(max_length=50, blank=False, null=False)
     book_author_name = models.CharField(max_length=50, blank=False, null=False)
     book_price = models.IntegerField(blank=False, null=False)
-    book_type = models.CharField(max_length=50, blank=False, null=False, default=1, choices=BOOK_TYPE_CHOICES)
+    book_type = models.CharField(
+        max_length=50, blank=False, null=False, default="Novel", choices=BOOK_TYPE_CHOICES)
     admin = models.ForeignKey(Admin, on_delete=models.CASCADE)
     class Meta:
         db_table = 'Book'

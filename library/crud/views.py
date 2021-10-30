@@ -7,8 +7,6 @@ from .models import Admin, Book
 from .serializers import AdminLoginSerializer, AdminSignUpSerializer, AddNewBookSerializer, UpdateBookSerializer
 from passlib.hash import pbkdf2_sha256
 
-# Create your views here.
-
 
 class AdminSignUpView(CreateAPIView):
     '''
@@ -25,6 +23,9 @@ class AdminSignUpView(CreateAPIView):
                 serializer.save()
 
                 admin_queryset = Admin.objects.get(email=data['email'])
+                request.session['loginAdminId'] = admin_queryset.id
+                request.session['loginAdminName'] = admin_queryset.name
+                request.session['loginAdminEmail'] = admin_queryset.email
                 response_data = {
                     'id': admin_queryset.id,
                     'name': admin_queryset.name,
@@ -51,22 +52,22 @@ class AdminLoginView(GenericAPIView):
         try:
             data = request.data
             serializers = self.get_serializer(data=data)
-            
+
             if serializers.is_valid():
                 admin = Admin.objects.filter(email=data['email']).values().first()
                 is_password_correct = pbkdf2_sha256.verify(data['password'], admin.get('password', '')) if admin else None
 
                 if not all([admin, is_password_correct]):
                     raise Exception('Email/password not found!')
-                
+                name = admin.get('name')
                 request.session['loginAdminId'] = admin.get('id')
-                request.session['loginAdminName'] = admin.get('name')
+                request.session['loginAdminName'] = name
                 request.session['loginAdminEmail'] = admin.get('email')
 
-                return Response({'message': 'success', 'data': admin, 'session': request.session}, status=status.HTTP_200_OK)
-            return Response({'message': 'Incorrect data', 'data': {}, 'session': None}, status=status.HTTP_400_BAD_REQUEST)
+                return Response({'message': f'Welcome {name}', 'data': admin, 'session': request.session}, status=status.HTTP_200_OK)
+            return Response({'message': 'Expected field not found', 'data': {}, 'session': None}, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
-            return Response({'message': f'{e}', 'data': {}, 'session': None}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+            return Response({'message': 'Server Error', 'data': {}, 'session': None}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
 
 class AddBookView(CreateAPIView):
@@ -136,7 +137,7 @@ class UpdateBookView(UpdateAPIView):
     def put(self, request, *args, **kwargs):
         try:
             book_id = self.kwargs['bookId']
-            data = request.data
+            data = request.data.get('data', None)
             
             if all([book_id, data]):
                 book_queryset = Book.objects.get(id=book_id)
@@ -177,3 +178,12 @@ class DeleteBookView(DestroyAPIView):
             return Response({'message': 'Incorrect data'}, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             return Response({'message': f'{e}'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
+
+class LogoutView(APIView):
+    '''
+        LogoutView will remove data from session
+    '''
+    def get(self, request):
+        request.session = None
+        return Response({'message': 'logout successfully'}, status=status.HTTP_200_OK)

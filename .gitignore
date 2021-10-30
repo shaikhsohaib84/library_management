@@ -22,3 +22,16 @@ library/crud/migrations/__pycache__/0002_rename_admin_id_book_admin.cpython-39.p
 library/library/__init__.py
 library/crud/migrations/0001_initial.py
 library/crud/migrations/0002_alter_admin_password.py
+library-frontend/yarn.lock
+library-frontend/public/favicon.ico
+library-frontend/public/index.html
+library-frontend/public/logo192.png
+library-frontend/public/logo512.png
+library-frontend/public/manifest.json
+library-frontend/public/robots.txt
+library/crud/migrations/0002_alter_book_book_type.py
+library/crud/migrations/0003_alter_book_book_type.py
+library/crud/migrations/__pycache__/0002_alter_book_book_type.cpython-39.pyc
+library/crud/migrations/__pycache__/0003_alter_book_book_type.cpython-39.pyc
+library-frontend/package-lock.json
+library-frontend/package.json
